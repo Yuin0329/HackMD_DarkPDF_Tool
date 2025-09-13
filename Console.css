@@ -1,8 +1,7 @@
 // 清除之前的樣式
-const oldStyle = document.querySelector('style[data-dark-theme]');
-if (oldStyle) oldStyle.remove();
+document.querySelectorAll('style[data-dark-theme]').forEach(s => s.remove());
 
-// 注入修正版暗色主題樣式
+// 強制樣式
 const darkStyle = document.createElement('style');
 darkStyle.setAttribute('data-dark-theme', 'true');
 darkStyle.textContent = `
@@ -17,21 +16,12 @@ darkStyle.textContent = `
       color: #e0e0e0 !important;
     }
     
-    h1, h2, h3, h4, h5, h6 {
-      color: #ffffff !important;
-    }
-    
-    p, li, td, th, span, div {
+    h1, h2, h3, h4, h5, h6, p, li, td, th, span, div {
       color: #e0e0e0 !important;
     }
     
-    strong, b {
-      color: #ffffff !important;
-    }
-    
-    a {
-      color: #66b3ff !important;
-    }
+    strong, b { color: #ffffff !important; }
+    a { color: #66b3ff !important; }
     
     code {
       background-color: #2d2d2d !important;
@@ -51,24 +41,45 @@ darkStyle.textContent = `
       border-left: 4px solid #666 !important;
     }
     
+    /* 數學公式區域 - 使用完全反轉 */
+    .MathJax_Display, .MathJax, .MathJax_SVG_Display, .MathJax_SVG {
+      filter: invert(1) hue-rotate(180deg) !important;
+      background-color: white !important;
+      padding: 10px !important;
+      border-radius: 6px !important;
+      margin: 10px 0 !important;
+      display: block !important;
+    }
+    
     table {
       background-color: #1a1a1a !important;
       color: #e0e0e0 !important;
     }
     
-    th {
-      background-color: #2d2d2d !important;
-      color: #ffffff !important;
-    }
-    
-    tr:nth-child(even) {
-      background-color: #252525 !important;
-    }
-    
-    hr {
-      border-color: #444 !important;
-    }
+    th { background-color: #2d2d2d !important; color: #ffffff !important; }
+    tr:nth-child(even) { background-color: #252525 !important; }
+    hr { border-color: #444 !important; }
   }
 `;
 document.head.appendChild(darkStyle);
-console.log('暗色主題已套用，現在可以列印了！記得勾選"背景圖形"選項');
+
+// 暴力方法：直接用 JavaScript 修改每個數學元素
+setTimeout(() => {
+  // 找到所有可能的數學容器
+  const mathContainers = document.querySelectorAll('.MathJax_Display, .MathJax, .MathJax_SVG_Display, .MathJax_SVG');
+  
+  console.log('找到數學容器:', mathContainers.length);
+  
+  mathContainers.forEach((container, index) => {
+    // 方法1: 使用濾鏡反轉
+    container.style.setProperty('filter', 'invert(1) hue-rotate(180deg)', 'important');
+    container.style.setProperty('background-color', 'white', 'important');
+    container.style.setProperty('padding', '10px', 'important');
+    container.style.setProperty('border-radius', '6px', 'important');
+    container.style.setProperty('margin', '10px 0', 'important');
+    
+    console.log(`已反轉數學容器 ${index + 1}`);
+  });
+  
+  console.log('數學公式已用濾鏡反轉！');
+}, 2000);
