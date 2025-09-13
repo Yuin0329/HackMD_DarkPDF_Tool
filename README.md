@@ -1,7 +1,10 @@
 # HackMD_Darkmode_PDF
-## 原由:鑑於在HackMD上匯出時無法用暗色主題匯出PDF，故做了這個網頁工具
-## 功能:可匯出暗色主題PDF，Latex公式也可順利反轉成黑底白字
-
+## 原由
+鑑於在HackMD上匯出時無法用暗色主題匯出PDF，故做了這個網頁工具
+---
+## 功能
+可匯出暗色主題PDF，Latex公式也可順利反轉成黑底白字
+---
 ## 使用方式
 1. 按F12後去Console
 2. 貼上 Console.css 後按Enter
