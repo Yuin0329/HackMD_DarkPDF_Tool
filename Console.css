@@ -1,7 +1,7 @@
 // 清除之前的樣式
 document.querySelectorAll('style[data-dark-theme]').forEach(s => s.remove());
 
-// 強制樣式
+// 強制
 const darkStyle = document.createElement('style');
 darkStyle.setAttribute('data-dark-theme', 'true');
 darkStyle.textContent = `
@@ -63,7 +63,7 @@ darkStyle.textContent = `
 `;
 document.head.appendChild(darkStyle);
 
-// 暴力方法：直接用 JavaScript 修改每個數學元素
+// 暴力法：直接用 JS 修每個數學元素
 setTimeout(() => {
   // 找到所有可能的數學容器
   const mathContainers = document.querySelectorAll('.MathJax_Display, .MathJax, .MathJax_SVG_Display, .MathJax_SVG');
@@ -71,7 +71,7 @@ setTimeout(() => {
   console.log('找到數學容器:', mathContainers.length);
   
   mathContainers.forEach((container, index) => {
-    // 方法1: 使用濾鏡反轉
+    // 方法1: 濾鏡反轉
     container.style.setProperty('filter', 'invert(1) hue-rotate(180deg)', 'important');
     container.style.setProperty('background-color', 'white', 'important');
     container.style.setProperty('padding', '10px', 'important');
@@ -83,3 +83,4 @@ setTimeout(() => {
   
   console.log('數學公式已用濾鏡反轉！');
 }, 2000);
+
