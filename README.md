@@ -7,6 +7,6 @@
 * Latex公式也能配合
 ## 使用方式
 1. 按F12後去Console
-2. 貼上 Console.css 後按Enter
+2. 貼上 ```Console.css``` 內容後按Enter
 3. crtl+P 列印
 4. 邊界選"無"，選項勾"背景圖形"
