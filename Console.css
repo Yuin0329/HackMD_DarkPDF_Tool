@@ -1,4 +1,4 @@
-// 清除之前的樣式
+
 document.querySelectorAll('style[data-dark-theme]').forEach(s => s.remove());
 
 // 強制
@@ -83,4 +83,5 @@ setTimeout(() => {
   
   console.log('數學公式已用濾鏡反轉！');
 }, 2000);
+
 
